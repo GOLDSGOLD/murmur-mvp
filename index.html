@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Murmur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Private daily ritual</p>
+          <h1>Murmur</h1>
+        </div>
+        <div class="status-pill">
+          <span class="dot"></span>
+          Private by default
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel prompt-panel">
+          <div class="prompt-header">
+            <p class="eyebrow">Today's prompt</p>
+            <span id="todayDate" class="date-badge"></span>
+          </div>
+          <h2 id="dailyPrompt">What is one tiny truth you need to honor today?</h2>
+          <p class="subtle">Take 30–60 seconds. Capture a feeling, a moment, or a meaningful note.</p>
+        </section>
+
+        <section class="panel composer-panel">
+          <form id="entryForm">
+            <div class="field-row">
+              <label for="mood">Mood</label>
+              <select id="mood" name="mood">
+                <option value="calm">Calm</option>
+                <option value="happy">Happy</option>
+                <option value="grateful">Grateful</option>
+                <option value="thoughtful">Thoughtful</option>
+                <option value="overwhelmed">Overwhelmed</option>
+                <option value="exhausted">Exhausted</option>
+                <option value="sad">Sad</option>
+              </select>
+            </div>
+
+            <div class="field-row textarea-row">
+              <label for="reflection">Your murmur</label>
+              <textarea
+                id="reflection"
+                name="reflection"
+                rows="5"
+                maxlength="280"
+                placeholder="I felt ..."
+                required
+              ></textarea>
+              <small id="charCounter">0 / 280</small>
+            </div>
+
+            <div class="checkbox-row">
+              <label class="checkbox-item">
+                <input type="checkbox" id="privateToggle" checked />
+                <span>Keep it private</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" id="shareToggle" />
+                <span>Share with trusted circle</span>
+              </label>
+            </div>
+
+            <div class="field-row" id="circleField" hidden>
+              <label for="trustedCircle">Trusted circle</label>
+              <input
+                id="trustedCircle"
+                name="trustedCircle"
+                type="text"
+                placeholder="e.g. Maya, Sam, Priya"
+              />
+            </div>
+
+            <button type="submit" class="primary-button">Save murmur</button>
+          </form>
+        </section>
+
+        <aside class="panel recap-panel">
+          <div class="section-head">
+            <p class="eyebrow">Weekly recap</p>
+          </div>
+          <div id="weeklyRecap" class="recap-content"></div>
+        </aside>
+
+        <section class="panel timeline-panel">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Archive</p>
+              <h3>Your timeline</h3>
+            </div>
+            <div class="filter-strip" aria-label="Mood filters">
+              <button class="filter-chip active" data-filter="all" type="button">All</button>
+              <button class="filter-chip" data-filter="happy" type="button">Happy</button>
+              <button class="filter-chip" data-filter="calm" type="button">Calm</button>
+              <button class="filter-chip" data-filter="grateful" type="button">Grateful</button>
+              <button class="filter-chip" data-filter="thoughtful" type="button">Thoughtful</button>
+              <button class="filter-chip" data-filter="overwhelmed" type="button">Overwhelmed</button>
+              <button class="filter-chip" data-filter="exhausted" type="button">Exhausted</button>
+              <button class="filter-chip" data-filter="sad" type="button">Sad</button>
+            </div>
+          </div>
+
+          <div id="entriesList" class="entries-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
